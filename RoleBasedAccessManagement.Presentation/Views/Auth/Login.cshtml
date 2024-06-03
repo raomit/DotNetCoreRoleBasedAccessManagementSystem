@@ -1,0 +1,45 @@
+﻿
+@{
+    ViewData["Title"] = "Login";
+}
+
+@using RoleBasedAccessManagement.Infrastructure.Models
+
+@model User
+
+<h1>Login</h1>
+
+<div class="row">
+    <div class="col-4">
+        @using (Html.BeginForm("Login", "Auth", FormMethod.Post))
+        {
+            if (ViewBag.error != null)
+            {
+                @Html.LabelFor(x => x.Email, "Email", new { @class = "form-label d-block" })
+                @Html.TextBoxFor(x => x.Email, "@ViewBag.email", new { @class = "form-control", @type = "email" })
+                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(x => x.Password, "Password", new { @class = "form-label d-block" })
+                @Html.TextBoxFor(x => x.Password, "@ViewBag.password", new { @class = "form-control", @type = "password" })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+
+                <span class="text-danger">@ViewBag.error</span>
+            }
+            else
+            {
+                @Html.LabelFor(x => x.Email, "Email", new { @class = "form-label d-block" })
+                @Html.TextBoxFor(x => x.Email, "", new { @class = "form-control", @type = "email" })
+                @Html.ValidationMessageFor(x => x.Email, "", new { @class = "text-danger" })
+
+                @Html.LabelFor(x => x.Password, "Password", new { @class = "form-label d-block" })
+                @Html.TextBoxFor(x => x.Password, "", new { @class = "form-control", @type = "password" })
+                @Html.ValidationMessageFor(x => x.Password, "", new { @class = "text-danger" })
+            }
+
+
+            <button type="submit" class="btn btn-small btn-success mt-4 d-block">Login</button>
+        }
+    </div>
+</div>
+
+

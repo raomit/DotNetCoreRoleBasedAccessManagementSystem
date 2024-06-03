@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\buildMultiTargeting\RoleBasedAccessManagement.Presentation.props" />
+</Project>
